@@ -1,0 +1,15 @@
+Name: PoneyFier
+IconPath: PF.jpg
+SoundPath: PF.wav
+Description: |
+    Comme un poney, je suis super fier. Quand toi tu es extraordinaire !
+BrainsPackage: PF
+AgentsBrainClasses:
+    WarBase: WarBaseBrainController
+    WarExplorer: WarExplorerBrainController
+    WarLight: WarLightBrainController
+    WarHeavy: WarHeavyBrainController
+    WarRocketLauncher: WarRocketLauncherBrainController
+    WarKamikaze: WarKamikazeBrainController
+    WarEngineer: WarEngineerBrainController
+    WarTurret: WarTurretBrainController
