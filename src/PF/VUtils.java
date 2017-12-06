@@ -90,6 +90,10 @@ public class VUtils {
             return MovableWarAgent.ACTION_MOVE;
         }
         
+        public static String[] encodeCoord(Double x,Double y){
+            return new String[]{Double.toString(x),Double.toString(y)};
+        }
+        
         public static String[] decodeMessage(WarMessage m){
             return m.getMessage().split("\\s+");
         }

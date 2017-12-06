@@ -16,6 +16,8 @@ import java.util.List;
 public abstract class WarExplorerBrainController extends WarExplorerBrain {
 
     WTask ctask;
+    Double x;
+    Double y;
     
     public List<WarAgentPercept> getPerceptsRessources(){
         List<WarAgentPercept> ressources = new ArrayList<>();
@@ -24,6 +26,21 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
                 ressources.add(wap);
         return ressources;
     }
+    
+    static WTask explore = new WTask(){
+        String exec(WarBrain bc) {
+            WarExplorerBrainController me = (WarExplorerBrainController) bc;
+            WarMessage m = me.getMessageFromBase();
+            //Si j'ai un message de la base je vais vers elle
+            if (m != null) {
+                me.setDebugString(""+m.getDistance());
+            }
+
+            //j'envoie un message aux bases pour savoir où elle sont..
+            me.broadcastMessageToAgentType(WarAgentType.WarBase, "Where are you?", (String[]) null);
+            return VUtils.Wiggle(me);
+        }        
+    };
     
     static WTask scoutForEnemyBase = new WTask(){
         String exec(WarBrain bc){
@@ -122,6 +139,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
                 for (WarAgentPercept wap : food) {                        
                         me.setDebugString("Found Food");
                         me.broadcastMessageToAgentType(WarAgentType.WarExplorer, "foodHere", (String[]) null);
+                        me.broadcastMessageToAll("MAP found food", VUtils.encodeCoord(me.x,me.y));
                         if (wap.getDistance() <= WarFood.MAX_DISTANCE_TAKE) {
                             return (MovableWarAgent.ACTION_TAKE);
                         } else if (closest == null || wap.getDistance() < closest.getDistance()) {
@@ -143,7 +161,7 @@ public abstract class WarExplorerBrainController extends WarExplorerBrain {
 
     public WarExplorerBrainController() {
         super();
-        ctask = scoutForEnemyBase; // initialisation de la FSM
+        ctask = explore; // initialisation de la FSM
     }
 
     @Override

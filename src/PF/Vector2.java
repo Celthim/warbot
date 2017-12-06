@@ -270,9 +270,7 @@ public class Vector2 {
             /*Vector2 v1 = new Vector2((float) cc1.getX(), (float) cc1.getY());
             Vector2 v2 = new Vector2((float) cc2.getX(), (float) cc2.getY());*/
             Vector2 v =new Vector2((float) cc1.getX(), (float) cc1.getY()).add(new Vector2((float) cc2.getX(), (float) cc2.getY()));
-            Double[] d = {(double) v.len(),(double) v.angle()};
-            return d;
-            
+            return new Double[]{(double) v.len(),(double) v.angle()};            
         }
 	
 //	@Override
