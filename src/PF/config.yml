@@ -2,7 +2,7 @@ Name: PoneyFier
 IconPath: PF.jpg
 SoundPath: PF.wav
 Description: |
-    Comme un poney, je suis super fier. Quand toi tu es extraordinaire !
+    Comme un poney, je suis super fier. Des arc-en-ciels dans la crinière !
 BrainsPackage: PF
 AgentsBrainClasses:
     WarBase: WarBaseBrainController
